@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.6.3-cudnn-devel-ubuntu22.04
+FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED=1
@@ -13,18 +13,14 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1 \
     && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1 \
     && python -m pip install --upgrade pip
 
-# torch 2.12.0+cu126: latest cu126 wheel, satisfies unsloth_zoo's torch>=2.4.0,<2.13.0.
-# torchvision 0.27.0 satisfies torch 2.12.0's torchvision>=0.27.0 requirement.
-# Base image is cuda:12.6 (available on Docker Hub); Driver 580 on host is backward-compatible.
+# torch 2.5.1+cu121: latest stable CUDA 12.1 wheel.
+# LLaMA-Factory requires torch>=1.13.1, so 2.5.1 satisfies it with no version conflicts.
 RUN pip install \
-    torch==2.12.0 torchvision==0.27.0 \
-    --index-url https://download.pytorch.org/whl/cu126
+    torch==2.5.1 torchvision==0.20.1 \
+    --index-url https://download.pytorch.org/whl/cu121
 
-# No version constraints needed — torch 2.12.0 naturally satisfies all unsloth dependencies.
-RUN pip install \
-    unsloth_zoo \
-    "unsloth @ git+https://github.com/unslothai/unsloth.git" \
-    datasets bitsandbytes huggingface_hub \
-    wandb scipy sentencepiece protobuf
+# LLaMA-Factory pulls in transformers, peft, trl, datasets, etc.
+# bitsandbytes is optional in llamafactory (only for 4-bit quantization), so install explicitly.
+RUN pip install llamafactory bitsandbytes
 
 WORKDIR /workspace

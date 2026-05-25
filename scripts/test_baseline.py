@@ -1,5 +1,7 @@
 import torch
-from unsloth import FastLanguageModel
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+
+MODEL = "yentinglin/Llama-3-Taiwan-8B-Instruct"
 
 CASES = [
     "甲駕車行駛於市區道路，在綠燈時直行，乙騎機車闖紅燈左轉，雙方發生碰撞。甲車頭受損，乙人受傷。請問責任如何判斷？",
@@ -11,19 +13,24 @@ print("=" * 60)
 print("基線測試：Llama-3-Taiwan-8B-Instruct 原始回答品質")
 print("=" * 60)
 
-model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name="yentinglin/Llama-3-Taiwan-8B-Instruct",
-    max_seq_length=2048,
+bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
+    bnb_4bit_compute_dtype=torch.bfloat16,
 )
-FastLanguageModel.for_inference(model)
+model = AutoModelForCausalLM.from_pretrained(
+    MODEL,
+    quantization_config=bnb_config,
+    device_map="auto",
+)
+tokenizer = AutoTokenizer.from_pretrained(MODEL)
+model.eval()
 
 for i, case in enumerate(CASES, 1):
     print(f"\n【案例 {i}】\n{case}\n")
     messages = [{"role": "user", "content": case}]
     inputs = tokenizer.apply_chat_template(
         messages, tokenize=True, add_generation_prompt=True, return_tensors="pt"
-    ).to("cuda")
+    ).to(model.device)
 
     with torch.no_grad():
         outputs = model.generate(
@@ -31,6 +38,7 @@ for i, case in enumerate(CASES, 1):
             max_new_tokens=512,
             temperature=0.7,
             do_sample=True,
+            pad_token_id=tokenizer.eos_token_id,
         )
 
     response = tokenizer.decode(outputs[0][inputs.shape[1]:], skip_special_tokens=True)

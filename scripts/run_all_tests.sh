@@ -18,7 +18,10 @@ run_test() {
     echo "" | tee -a "$LOG"
     echo "[$(date)] --- $name ---" | tee -a "$LOG"
     docker run --gpus all --rm \
+        -e NCCL_P2P_DISABLE=1 \
+        -e NCCL_IB_DISABLE=1 \
         -v "$WORKDIR":/workspace \
+        -v "$HOME/.cache/huggingface":/root/.cache/huggingface \
         -w /workspace \
         legal-lora:latest \
         python "$script" >> "$LOG" 2>&1
