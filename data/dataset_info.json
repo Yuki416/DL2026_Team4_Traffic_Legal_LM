@@ -1,0 +1,42 @@
+{
+  "traffic_law_round1": {
+    "file_name": "final_fine_tuning_data/traffic_cases_alpaca_Feb_gpt4o.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
+  "traffic_law_mar_gpt4o_train": {
+    "file_name": "mar_gpt4o_train.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
+  "traffic_law_mar_gpt4o_val": {
+    "file_name": "mar_gpt4o_val.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
+  "traffic_legal_0603_train": {
+    "file_name": "colloquial/train.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
+  "traffic_legal_0603_val": {
+    "file_name": "colloquial/val.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  }
+}

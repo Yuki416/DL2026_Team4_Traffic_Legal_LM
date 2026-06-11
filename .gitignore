@@ -5,3 +5,12 @@ __pycache__/
 .env
 開發流程 暫定.md
 setup_verify.log
+
+# 根目錄執行紀錄（logs/ 目錄下的 pipeline log 仍保留追蹤）
+/*.log
+.gradio/
+
+# Step4 sub-agent 暫存腳本（保留於本機，不進 repo）
+scripts/_write_*.py
+scripts/_verify_22.py
+scripts/03_extract.py.bak

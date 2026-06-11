@@ -1,0 +1,34 @@
+### model
+model_name_or_path: /mnt/8tb_hdd/under115b/traffic_legal_lm/models/Llama-3-Taiwan-8B-Instruct
+
+### method
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+lora_rank: 16
+lora_alpha: 32
+lora_dropout: 0.05
+
+### dataset
+dataset: traffic_law_round1
+dataset_dir: /workspace/data
+template: llama3
+cutoff_len: 1024
+
+### output
+output_dir: /workspace/models/round1_lora
+logging_steps: 10
+save_steps: 50
+save_total_limit: 2
+plot_loss: true
+overwrite_output_dir: true
+
+### train
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 2
+learning_rate: 2.0e-4
+num_train_epochs: 3.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+bf16: true

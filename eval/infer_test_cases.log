@@ -1,0 +1,27 @@
+Loading tokenizer...
+Loading base model...
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:03,  1.05s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.00s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:02<00:00,  1.01it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.40it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.22it/s]
+We've detected an older driver with an RTX 4000 series GPU. These drivers have issues with P2P. This can affect the multi-gpu inference when using accelerate device_map.Please make sure to update your driver to the latest version which resolves this.
+Loading LoRA adapter...
+
+==================================================
+Running TC-01: 機車左轉 vs 汽車直行（有號誌路口）
+The following generation flags are not valid and may be ignored: ['top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+Raw output:
+{"核心爭議": ["是否左轉時未禮讓直行車或未確認路口安全", "駕駛過失與被害人受傷結果是否具有相當因果關係"], "責任類型": ["刑事過失傷害責任", "違反道路交通安全注意義務"], "適用法條": ["刑法第284條前段", "道路交通安全規則第102條第1項"]}
+
+==================================================
+Running TC-02: 無號誌路口，支線道未讓幹線道
+Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+Raw output:
+{"核心爭議": ["是否左轉時未禮讓直行車或未確認路口安全", "駕駛過失與被害人受傷結果是否具有相當因果關係"], "責任類型": ["刑事過失傷害責任", "違反道路交通安全注意義務"], "適用法條": ["刑法第284條前段", "道路交通安全規則第102條第1項"]}
+
+==================================================
+Running TC-03: 閃光紅燈路口，未完全停車讓行
+Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+Raw output:
+{"核心爭議": ["是否於閃光紅燈路口未停車再開並禮讓幹道車", "是否左轉時未禮讓直行車或未確認路口安全", "駕駛過失與被害人受傷結果是否具有相當因果關係"], "責任類型": ["刑事過失傷害責任", "違反道路交通安全注意義務"], "適用法條": ["刑法第284條前段", "道路交通標誌標線號誌設置規則第211條"]}
+
+Done. Results written to /workspace/eval/test_cases.json

@@ -1,0 +1,152 @@
+{
+  "source_zip": "traffic_civil 202603.zip",
+  "source_counts": {
+    "civil_raw": 795,
+    "criminal_raw": 3290
+  },
+  "filtered_counts": {
+    "civil_accident": 781,
+    "criminal_accident": 1462,
+    "combined": 2243
+  },
+  "dropped_counts": {
+    "civil_dropped": 14,
+    "criminal_dropped": 1828
+  },
+  "instructions": {
+    "civil": "請判斷以下車禍民事求償情境的核心爭議、責任類型與適用法條",
+    "criminal": "請判斷以下車禍刑事情境的核心爭議、責任類型與適用法條"
+  },
+  "top_civil_titles": [
+    [
+      "侵權行為損害賠償(交通)",
+      288
+    ],
+    [
+      "損害賠償(交通)",
+      224
+    ],
+    [
+      "侵權行為損害賠償（交通）",
+      108
+    ],
+    [
+      "侵權行為損害賠償",
+      63
+    ],
+    [
+      "損害賠償",
+      30
+    ],
+    [
+      "損害賠償（交通）",
+      20
+    ],
+    [
+      "侵權行為損害賠償(交通事件)",
+      11
+    ],
+    [
+      "過失傷害",
+      9
+    ],
+    [
+      "侵權行為損害賠償（交通事件）",
+      5
+    ],
+    [
+      "國家賠償",
+      4
+    ],
+    [
+      "過失致死等",
+      2
+    ],
+    [
+      "侵權行為損害賠償（交通）（原）",
+      2
+    ],
+    [
+      "因過失傷害附帶民訴",
+      1
+    ],
+    [
+      "返還分擔額",
+      1
+    ],
+    [
+      "國家賠償等",
+      1
+    ]
+  ],
+  "top_criminal_titles": [
+    [
+      "過失傷害",
+      1291
+    ],
+    [
+      "過失致死",
+      93
+    ],
+    [
+      "肇事逃逸罪等",
+      16
+    ],
+    [
+      "肇事逃逸罪",
+      14
+    ],
+    [
+      "過失致死等",
+      12
+    ],
+    [
+      "過失傷害等",
+      10
+    ],
+    [
+      "肇事遺棄罪等",
+      8
+    ],
+    [
+      "過失重傷害",
+      6
+    ],
+    [
+      "肇事逃逸等",
+      4
+    ],
+    [
+      "肇事逃逸",
+      4
+    ],
+    [
+      "肇事遺棄罪",
+      2
+    ],
+    [
+      "過失重傷害等",
+      1
+    ],
+    [
+      "過失傷害(少連偵)",
+      1
+    ]
+  ],
+  "files": [
+    "traffic_alpaca_civil_202603.json",
+    "traffic_alpaca_civil_202603.jsonl",
+    "traffic_alpaca_combined_202603.json",
+    "traffic_alpaca_combined_202603.jsonl",
+    "traffic_alpaca_criminal_202603.json",
+    "traffic_alpaca_criminal_202603.jsonl",
+    "traffic_extracted_structured_202603.json",
+    "traffic_extracted_structured_202603.jsonl",
+    "traffic_prompts_202603.json"
+  ],
+  "quality_notes": [
+    "刑事檔中非車禍/非過失傷亡案件已先排除；例如公共危險、洗錢等不納入本次 Alpaca 配對。",
+    "法條以 JFULL 明示引用為主，並依事故注意義務關鍵字補入常見道路交通安全法規；建議正式訓練前抽樣人工複核。",
+    "口語求助文會去除車牌號碼等明顯識別資訊，地名若法院文本已遮蔽則保留遮蔽形式。"
+  ]
+}

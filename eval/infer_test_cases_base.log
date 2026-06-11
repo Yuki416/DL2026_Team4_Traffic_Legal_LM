@@ -1,0 +1,42 @@
+Loading tokenizer...
+Loading base model (no LoRA)...
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:03,  1.06s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.01s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:02<00:00,  1.02it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.44it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.24it/s]
+We've detected an older driver with an RTX 4000 series GPU. These drivers have issues with P2P. This can affect the multi-gpu inference when using accelerate device_map.Please make sure to update your driver to the latest version which resolves this.
+
+==================================================
+Running TC-01: 機車左轉 vs 汽車直行（有號誌路口）
+The following generation flags are not valid and may be ignored: ['top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+Raw output:
+根據道路交通安全規則第102條第一項第5款規定：「汽車行駛至交岔路口，其行進或轉彎，應依下列規定：五、左轉彎時，應距交岔路口三十公尺前顯示方向燈或手勢，換入內側車道或左轉車道，行至交岔路口中心處左轉，並不得占用來車道搶先左轉。」
+
+由於你提到自己是綠燈直行，所以可以推測你的行為符合上述規定。但是，你提到對方直行車輛也有責任，這可能意味著對方未注意車前狀況或超速行駛。
+
+因此，法院會根據具體情況來判斷雙方的過失比例，決定誰應該承擔主要或次要過失責任。如果法院認定你有過失，那麼你可能需要承擔相應的民事賠償責任，包括醫療費用、損壞修理費用以及其他相關損失。
+
+==================================================
+Running TC-02: 無號誌路口，支線道未讓幹線道
+Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+Raw output:
+根據你所描述的情況,這起事故的核心爭議在於雙方對於注意義務的違反。
+
+首先,作為汽車駕駛人,你有義務遵守交通規則,尤其是停讓行人和未成年人的義務。雖然事發地點沒有號誌,但你仍應減速慢行,並禮讓行人和其他道路使用者優先通行。你的自述顯示你僅靠「往左看」即貿然開出巷口,未注意右側狀況,導致事故發生,已違反相關注意義務。
+
+其次,機車騎士若無過失,可依民法第184條第1項前段及第191條之2規定,向你求償損害賠償責任。因為你違反保護他人法律(如道路交通管理處罰條例)而不法侵害他人權利,構成過失侵權行為,應負損害賠償責任。
+
+因此,建議你主動聯繫警方到場處理,釐清肇事責任歸屬,並蒐集相關證據以維護自身權益。此外,建議你投保強制險及任意險,以避免日後須自行承擔龐大賠償金額。
+
+==================================================
+Running TC-03: 閃光紅燈路口，未完全停車讓行
+Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+Raw output:
+在這個案例中，核心爭議在於你是否有遵守閃光紅燈號誌指示，是否應該在通過前先停車確認安全後再通行，以及對方是否真的有闖紅燈。
+
+根據道路交通標誌標線號誌設定規則第221條，閃光紅燈表示「停車再開」，車輛應減速接近，先停止於交岔路口前，讓幹道車優先通行後認為安全時，方可續行。因此，即使你認為對向沒有車，你仍應該先停下來確認對向是否有來車才繼續通行。
+
+至於責任歸屬，依據道路交通管理處罰條例第53條，如果你被認定為闖紅燈或紅燈右轉，將會被處以新臺幣1800元以上5400元以下罰鍰。如果因而肇事致人受傷，還可能面臨刑事責任，依刑法第284條過失傷害罪，最重可處2年以下有期徒刑、拘役或1000元以下罰金。
+
+建議你在事故發生後，立即報警並配合調查，提供相關證據如行車紀錄器影像，以釐清雙方責任歸屬。
+
+Done. Results written to /workspace/eval/test_cases.json

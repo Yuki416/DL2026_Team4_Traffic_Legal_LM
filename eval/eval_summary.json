@@ -1,0 +1,19 @@
+{
+  "sonnet46": {
+    "n": 18,
+    "resp_type_accuracy": 1.0,
+    "law_precision_avg": 0.586,
+    "law_recall_avg": 0.627,
+    "law_f1_avg": 0.573,
+    "dispute_precision_avg": 0.833,
+    "dispute_recall_avg": 0.83,
+    "dispute_f1_avg": 0.811
+  },
+  "gpt4o": {
+    "n": 18,
+    "resp_type_accuracy": 1.0,
+    "law_precision_avg": 0.753,
+    "law_recall_avg": 0.694,
+    "law_f1_avg": 0.701
+  }
+}
