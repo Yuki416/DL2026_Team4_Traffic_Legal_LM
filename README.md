@@ -24,8 +24,8 @@
 ## 2. 處理流程（Step1–4）
 
 ```
-司法院判決書開放資料（202602 / 202603，經 lianghsun/tw-processed-judgments 整理）
-        ↓ scripts/01_download.py
+司法院資料開放平台「裁判書」資料集（202602 / 202603，20260516 更新版）
+        ↓ 手動下載 .rar 壓縮檔並解壓
 data/raw/                              ← 原始判決書 JSON（已 gitignore，見第 4 節）
         ↓ Step1 規則式篩選
         │   scripts/02_filter.py        （刑事：JCASE 含「交」+ JTITLE 過失傷害/致死/致重傷 等）
@@ -67,7 +67,6 @@ Traffic_Legal_LM/
 │   ├── mar_gpt4o_train.json / mar_gpt4o_val.json / mar_test.json  # 教學組 GPT-4o 資料集（3 月）
 │   └── dataset_info.json          # LLaMA-Factory 資料集註冊
 ├── scripts/
-│   ├── 01_download.py             # 下載原始判決書資料
 │   ├── 02_filter.py / 02b_filter_civil.py   # Step1 篩選
 │   ├── 03_extract.py              # Step3 結構化抽取
 │   ├── make_chunks.py / sanitize_and_assemble.py / split_dataset.py  # Step4 切分與組裝
@@ -91,9 +90,9 @@ Traffic_Legal_LM/
 
 ### 4.1 公開資料（原始判決書）
 
-- 來源：[lianghsun/tw-processed-judgments](https://huggingface.co/datasets/lianghsun/tw-processed-judgments)（司法院裁判書開放資料的整理版）
-- 本專案使用範圍：202602、202603 月份（2026 年 5 月 16 日更新版）
-- `data/raw/` 已加入 `.gitignore`（不上傳），如需重現請執行 `scripts/01_download.py` 自行下載
+- 來源：[司法院資料開放平台](https://opendata.judicial.gov.tw/)「裁判書」資料集
+- 取得方式：於平台註冊帳號（學校 email 通常自動核准）後，下載「裁判書」202602、202603 月份壓縮檔（20260516 更新版），解壓至 `data/raw/`
+- `data/raw/` 已加入 `.gitignore`（不上傳，原始解壓後約 1.9GB）
 
 ### 4.2 本團隊資料集（`data/colloquial/`）
 
@@ -175,7 +174,7 @@ docker run --gpus all --rm -v $(pwd):/workspace -w /workspace \
 ### 7.2 重現資料處理 pipeline
 
 ```bash
-python scripts/01_download.py            # 下載原始判決書
+# 先於 https://opendata.judicial.gov.tw/ 申請帳號，下載「裁判書」202602/202603 月份壓縮檔並解壓至 data/raw/
 python scripts/02_filter.py               # Step1 刑事篩選
 python scripts/02b_filter_civil.py        # Step1 民事篩選
 python scripts/03_extract.py              # Step3 結構化抽取
