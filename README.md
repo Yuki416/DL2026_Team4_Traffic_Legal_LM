@@ -228,13 +228,3 @@ python demo/app.py
 基底模型 [Llama-3-Taiwan-8B-Instruct-rc2](https://huggingface.co/yentinglin/Llama-3-Taiwan-8B-Instruct-rc2)
 採 [Llama 3 Community License](https://huggingface.co/yentinglin/Llama-3-Taiwan-8B-Instruct-rc2/blob/main/LICENSE)，
 使用本專案 LoRA adapter 時請一併遵守該授權條款。
-
----
-
-## 10. 團隊成員
-
-| 姓名 | GitHub |
-|---|---|
-| [TODO] | [TODO] |
-| [TODO] | [TODO] |
-| [TODO] | [TODO] |
